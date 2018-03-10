@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">SpaceXplorer</string>
+
+    <!-- Game Activity -->
+    <string name="defaultBalance">$0</string>
+    <string name="defaultIncome">+$0</string>
+
+    <!-- Planet Fragment -->
+    <string name="defaultPlanetName">Earth</string>
+    <string name="defaultPlanetIncome">+$0</string>
+    <string name="defaultLaunchName">Low Orbit</string>
+    <string name="defaultLaunchAmount">0</string>
+    <string name="defaultLaunchIncome">+$0</string>
+    <string name="defaultLaunchTime">00:00:00</string>
+    <string name="defaultLaunchCost">$1M</string>
+    <string name="launchLabel">Launch</string>
+
+    <!-- Afk Activity -->
+    <string name="welcomeLabel">Welcome back to</string>
+    <string name="timeLabel">You were offline for</string>
+    <string name="earnedLabel">You earned</string>
+    <string name="awayLabel">while you were away</string>
+    <string name="watchAdLabel">Watch an Ad for double earnings</string>
+    <string name="acceptAdButton">Watch Ad</string>
+    <string name="declineAdButton">Decline</string>
+
+
+    <!-- Rocket Fragment -->
+
+
+    <!-- Improvement Fragment -->
+
+</resources>

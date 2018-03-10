@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Theme Colors -->
+    <color name="colorPrimary">#273C75</color>
+    <color name="colorPrimaryDark">#071926</color>
+    <color name="colorAccent">#E87E04</color>
+    <color name="colorText">#F1F2F6</color>
+    <color name="colorNumber">#2E86DE</color>
+    <color name="colorDisabled">#95A5A6</color>
+
+    <!-- Bottom Dots Color -->
+    <color name="inactiveDot">#202E86DE</color>
+
+    <!-- Launch Button Colors -->
+    <color name="buttonLaunch">#E67E22</color>
+    <color name="buttonLaunchPressed">#C0D35400</color>
+
+    <!-- Watch Ad Button Colors -->
+    <color name="buttonWatch">#C02ECC71</color>
+    <color name="buttonWatchPressed">#C027AE60</color>
+
+    <!-- Menu Button Colors -->
+    <color name="buttonMenu">#C02E86DE</color>
+    <color name="buttonMenuPressed">#C03867D6</color>
+
+</resources>

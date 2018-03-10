@@ -1,0 +1,57 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "500a5b4668bb1cab04ea9ebfce2dc1b1",
+    "entities": [
+      {
+        "tableName": "Solar",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`systemName` TEXT NOT NULL, `statingPlanet` INTEGER NOT NULL, `balance` REAL NOT NULL, `rocket` INTEGER NOT NULL, `planets` TEXT, PRIMARY KEY(`systemName`))",
+        "fields": [
+          {
+            "fieldPath": "systemName",
+            "columnName": "systemName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "statingPlanet",
+            "columnName": "statingPlanet",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "balance",
+            "columnName": "balance",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rocket",
+            "columnName": "rocket",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "planets",
+            "columnName": "planets",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "systemName"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"500a5b4668bb1cab04ea9ebfce2dc1b1\")"
+    ]
+  }
+}
