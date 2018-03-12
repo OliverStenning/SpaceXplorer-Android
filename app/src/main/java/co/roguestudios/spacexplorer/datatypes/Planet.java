@@ -13,24 +13,23 @@ public class Planet {
     private long launchTime;
     private double speed;
     private int rocket;
-    private long finishTime;
+    private long timeRemaining;
 
-    public Planet(String planetName, double income, double bonus, double cost, double rate, long launchTime, double speed, int rocket, long finishTime) {
+    public Planet(String planetName) {
         this.planetName = planetName;
-        this.income = income;
-        this.bonus = bonus;
-        this.cost = cost;
-        this.rate = rate;
-        this.launchTime = launchTime;
-        this.speed = speed;
-        this.rocket = rocket;
-        this.finishTime = finishTime;
     }
 
     public double getLaunchCost() {
         return Math.floor(Math.pow(rate, amount) * cost * discount);
     }
 
+    public double getLaunchIncome() {
+        return income * bonus * amount;
+    }
+
+    public int getTimePercentage() {
+        return (int) ((launchTime - timeRemaining) / launchTime) * 1000;
+    }
 
     public String getPlanetName() {
         return planetName;
@@ -120,11 +119,11 @@ public class Planet {
         this.rocket = rocket;
     }
 
-    public long getFinishTime() {
-        return finishTime;
+    public long getTimeRemaining() {
+        return timeRemaining;
     }
 
-    public void setFinishTime(long finishTime) {
-        this.finishTime = finishTime;
+    public void setTimeRemaining(long timeRemaining) {
+        this.timeRemaining = timeRemaining;
     }
 }

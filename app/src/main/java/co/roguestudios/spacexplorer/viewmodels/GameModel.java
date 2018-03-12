@@ -16,9 +16,12 @@ public class GameModel extends BaseModel {
             public void run() {
                 Solar system = db.solarDao().getSystem(systemName);
                 if (system != null) {
-                    double income = 100;
-                    double balance = system.getBalance() + income;
-                    db.solarDao().setBalance(systemName, balance);
+                    double income = system.calculateIncome();
+                    system.setIncome(income);
+                    if (income > 0) {
+                        system.setBalance(system.getBalance() + income);
+                    }
+                    db.solarDao().setSystem(system);
                 }
             }
         }, 0, 1000);

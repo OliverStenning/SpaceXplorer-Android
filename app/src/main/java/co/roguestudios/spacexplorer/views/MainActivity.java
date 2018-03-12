@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
 import co.roguestudios.spacexplorer.R;
@@ -48,17 +51,50 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable Solar system) {
                 if (system != null) {
-                    balanceText.setText(Utils.getStandardValue(system.getBalance(), true, false, 1));
-                    //incomeText.setText(Utils.getStandardValue(system.getIncome(), true, true, 1));
+                    if (system.getIncome() > 0) {
+
+                        balanceText.setText(Utils.getStandardValue(system.getBalance(), true, false, 3));
+                        Animation animation = new ScaleAnimation(1.0f, 0.95f, 1.0f, 0.95f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                        animation.setDuration(100);
+                        balanceText.startAnimation(animation);
+
+                        incomeText.setText(Utils.getStandardValue(system.getIncome(), true, true, 1));
+                        Animation fadeAnimation = new AlphaAnimation(1f, 0f);
+                        fadeAnimation.setDuration(1000);
+                        fadeAnimation.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+                                incomeText.setAlpha(1f);
+                            }
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+                                incomeText.setAlpha(0f);
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+                        incomeText.setAnimation(fadeAnimation);
+                    } else {
+                        incomeText.setAlpha(0f);
+                    }
+
                 }
             }
         };
         gameModel.getSystemLive().observe(this, balanceObserver);
-
+        gameModel.startTick();
     }
 
     public void clickMenu(View view) {
 
+    }
+
+    public void onDestroy() {
+        gameModel.stopTick();
+        super.onDestroy();
     }
 
 }

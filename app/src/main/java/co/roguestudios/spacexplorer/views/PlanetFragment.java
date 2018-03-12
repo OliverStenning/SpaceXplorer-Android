@@ -1,5 +1,8 @@
 package co.roguestudios.spacexplorer.views;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -16,8 +19,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import co.roguestudios.spacexplorer.R;
@@ -64,6 +70,7 @@ public class PlanetFragment extends Fragment {
                         planetPager.setAdapter(planetAdapter);
                         planetPager.addOnPageChangeListener(planetPagerPageChangeListener);
                         planetPager.setOffscreenPageLimit(planetAmount);
+                        planetPager.setCurrentItem(system.getStatingPlanet());
                         addBottomDots(planetPager.getCurrentItem());
                     } else {
                         //Update view of current page if pager adapter does exist
@@ -97,10 +104,12 @@ public class PlanetFragment extends Fragment {
 
         private Context context;
         private Solar system;
+        private ObjectAnimator[] progressAnimators;
 
         public ViewPagerAdapter(Context context, Solar system) {
             this.context = context;
             this.system = system;
+            progressAnimators = new ObjectAnimator[system.getPlanets().size()];
         }
 
         @Override
@@ -128,6 +137,17 @@ public class PlanetFragment extends Fragment {
                 }
             });
 
+            final Button launchButton = view.findViewById(R.id.launchButton);
+            launchButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    planetModel.clickLaunch(position);
+                    Animation animation = new ScaleAnimation(1.0f, 0.99f, 1.0f, 0.99f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                    animation.setDuration(50);
+                    launchButton.startAnimation(animation);
+                }
+            });
+
 
             updatePage(context, view, system, position);
 
@@ -151,13 +171,67 @@ public class PlanetFragment extends Fragment {
             container.removeView(view);
         }
 
-        private void updatePage(Context context, View planetPage, Solar system, int position) {
+        private void updatePage(Context context, View page, final Solar system, final int planet) {
 
             this.system = system;
 
-            System.out.println("Updated page");
-            //TextView planetIncomeText = planetPage.findViewById(R.id.planetIncomeText);
-            //planetIncomeText.setText(Utils.getStandardValue(solarSystem.getPlanetIncome(position), true, true, 3));
+            ImageView typeImage = page.findViewById(R.id.launchTypeImage);
+            //TODO update type image based on amount
+
+            TextView amountText = page.findViewById(R.id.launchAmountText);
+            amountText.setText(Integer.toString(system.getPlanets().get(planet).getAmount()));
+
+            ProgressBar unlockProgress = page.findViewById(R.id.launchUnlockProgress);
+            //TODO update unlock progress
+
+            TextView nameText = page.findViewById(R.id.launchNameText);
+            //TODO update name text based on amount
+
+            TextView incomeText = page.findViewById(R.id.launchIncomeText);
+            incomeText.setText(Utils.getStandardValue(system.getPlanets().get(planet).getLaunchIncome(), true, false, 1));
+
+            if (system.getPlanets().get(planet).getAmount() > 0) {
+                if (progressAnimators[planet] == null) {
+                    final ProgressBar launchProgress = page.findViewById(R.id.launchProgress);
+                    progressAnimators[planet] = ObjectAnimator.ofInt(launchProgress, "progress", system.getPlanets().get(planet).getTimePercentage(), 1000);
+                    progressAnimators[planet].setDuration(system.getPlanets().get(planet).getTimeRemaining());
+                    progressAnimators[planet].addListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            progressAnimators[planet] = ObjectAnimator.ofInt(launchProgress, "progress", 0, 1000);
+                            progressAnimators[planet].setDuration(system.getPlanets().get(planet).getLaunchTime());
+                            progressAnimators[planet].setRepeatCount(ValueAnimator.INFINITE);
+                            progressAnimators[planet].start();
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    });
+
+                    progressAnimators[planet].start();
+                }
+            }
+
+
+            TextView timerText = page.findViewById(R.id.launchTimerText);
+            timerText.setText(Utils.getTimeString(system.getPlanets().get(planet).getTimeRemaining()));
+
+            TextView costText = page.findViewById(R.id.launchCostText);
+            costText.setText(Utils.getStandardValue(system.getPlanets().get(planet).getLaunchCost(), true, false, 1));
+
+
 
 
         }

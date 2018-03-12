@@ -2,6 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -50,136 +51,177 @@
             android:layout_marginTop="32dp"
             android:background="@null"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintBottom_toTopOf="@+id/missionMainView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/planetIncomeText"
             app:srcCompat="@drawable/pl_earth"/>
 
         <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="0dp"
+            android:id="@+id/missionMainView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_weight="3"
-            android:orientation="vertical"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:baselineAligned="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/nameText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/rajdhani_bold"
-                android:gravity="bottom|center"
-                android:includeFontPadding="false"
-                android:text="@string/defaultLaunchName"
-                android:textAllCaps="false"
-                android:textColor="@color/colorText"
-                android:textSize="30sp"/>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                >
-
-                <ProgressBar
-                    android:id="@+id/incomeProgress"
-                    style="@style/amountProgress"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:max="1000"
-                    android:progress="1000"/>
-
-                <TextView
-                    android:id="@+id/incomeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/rajdhani_bold"
-                    android:gravity="center"
-                    android:text="@string/defaultLaunchIncome"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="18sp"/>
-
-            </FrameLayout>
-
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:orientation="horizontal"
-                android:paddingTop="4dp">
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/timerText"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_info"
-                    android:fontFamily="@font/rajdhani_bold"
-                    android:gravity="center"
-                    android:text="@string/defaultLaunchTime"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="16sp"/>
+                <ImageView
+                    android:id="@+id/launchTypeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:contentDescription="@null"
+                    android:padding="8dp"
+                    app:srcCompat="@drawable/ty_satellite"/>
 
                 <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2">
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1">
 
-                    <Button
-                        android:id="@+id/launchButton"
+                    <ProgressBar
+                        android:id="@+id/launchUnlockProgress"
+                        style="@style/amountProgress"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="4dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@drawable/bg_button_launch"
-                        android:fontFamily="@font/rajdhani_bold"
-                        android:stateListAnimator="@null"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorText"
-                        android:textSize="20sp"/>
+                        android:max="100"
+                        android:progress="100"/>
 
                     <TextView
-                        android:id="@+id/launchLabel"
+                        android:id="@+id/launchAmountText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:fontFamily="@font/rajdhani_bold"
+                        android:gravity="center"
+                        android:text="@string/defaultLaunchAmount"
+                        android:textColor="@color/colorText"
+                        android:textSize="18sp"/>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/launchNameText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/rajdhani_bold"
+                    android:gravity="bottom|start"
+                    android:includeFontPadding="false"
+                    android:text="@string/defaultLaunchName"
+                    android:textColor="@color/colorText"
+                    android:textSize="30sp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="4dp">
+
+                    <ProgressBar
+                        android:id="@+id/launchProgress"
+                        style="@style/amountProgress"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:max="1000"
+                        />
+
+                    <TextView
+                        android:id="@+id/launchIncomeText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
                         android:fontFamily="@font/rajdhani_bold"
-                        android:gravity="center|start"
-                        android:paddingEnd="12dp"
-                        android:paddingStart="12dp"
-                        android:text="@string/launchLabel"
+                        android:gravity="center"
+                        android:text="@string/defaultLaunchIncome"
+                        android:textColor="@color/colorText"
+                        android:textSize="18sp"/>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/launchTimerText"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/bg_info"
+                        android:fontFamily="@font/rajdhani_bold"
+                        android:gravity="center"
+                        android:text="@string/defaultLaunchTime"
                         android:textColor="@color/colorText"
                         android:textSize="16sp"/>
 
-                    <TextView
-                        android:id="@+id/costText"
-                        android:layout_width="match_parent"
+                    <FrameLayout
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/rajdhani_bold"
-                        android:gravity="center_vertical|end"
-                        android:paddingEnd="20dp"
-                        android:paddingStart="20dp"
-                        android:text="@string/defaultLaunchCost"
-                        android:textColor="@color/colorText"
-                        android:textSize="18sp"/>
+                        android:layout_weight="4">
 
-                </FrameLayout>
+                        <Button
+                            android:id="@+id/launchButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_button_launch"
+                            android:textSize="14sp"/>
+
+                        <TextView
+                            android:id="@+id/launchLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:elevation="24dp"
+                            android:fontFamily="@font/rajdhani_bold"
+                            android:gravity="center|start"
+                            android:paddingEnd="16dp"
+                            android:paddingStart="16dp"
+                            android:text="@string/launchLabel"
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/launchCostText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:elevation="24dp"
+                            android:fontFamily="@font/rajdhani_bold"
+                            android:gravity="center|end"
+                            android:paddingEnd="16dp"
+                            android:paddingStart="16dp"
+                            android:text="@string/defaultLaunchCost"
+                            android:textColor="@color/colorText"
+                            android:textSize="18sp"/>
+                    </FrameLayout>
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -1,6 +1,7 @@
 package co.roguestudios.spacexplorer.datatypes;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -18,6 +19,8 @@ public class Solar {
     private int rocket;
     private ArrayList<Planet> planets;
 
+    private double income;
+
     public Solar(@NonNull String systemName, int statingPlanet, double balance, int rocket, ArrayList<Planet> planets) {
         this.systemName = systemName;
         this.statingPlanet = statingPlanet;
@@ -32,8 +35,26 @@ public class Solar {
     }
 
     public void launchMission(int planet) {
+        if (planets.get(planet).getAmount() == 0) {
+            planets.get(planet).setTimeRemaining(planets.get(planet).getLaunchTime());
+        }
         planets.get(planet).setAmount(planets.get(planet).getAmount() + 1);
     }
+
+    public double calculateIncome() {
+        double income = 0;
+        for (Planet planet : planets) {
+            if (planet.getAmount() > 0) {
+                planet.setTimeRemaining(planet.getTimeRemaining() - 1000);
+                if (planet.getTimeRemaining() <= 0) {
+                    income += planet.getLaunchIncome();
+                    planet.setTimeRemaining(planet.getLaunchTime());
+                }
+            }
+        }
+        return income;
+    }
+
 
 
     @NonNull
@@ -75,5 +96,13 @@ public class Solar {
 
     public void setPlanets(ArrayList<Planet> planets) {
         this.planets = planets;
+    }
+
+    public double getIncome() {
+        return income;
+    }
+
+    public void setIncome(double income) {
+        this.income = income;
     }
 }
