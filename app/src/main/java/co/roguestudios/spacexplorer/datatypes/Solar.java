@@ -1,7 +1,6 @@
 package co.roguestudios.spacexplorer.datatypes;
 
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -13,50 +12,40 @@ public class Solar {
     @PrimaryKey
     @NonNull
     private String systemName;
-    private int statingPlanet;
-
     private double balance;
     private int rocket;
-    private ArrayList<Planet> planets;
+    private ArrayList<Launch> launches;
 
     private double income;
 
-    public Solar(@NonNull String systemName, int statingPlanet, double balance, int rocket, ArrayList<Planet> planets) {
+    //Constructors
+    public Solar(@NonNull String systemName, double balance, int rocket, ArrayList<Launch> launches, double income) {
         this.systemName = systemName;
-        this.statingPlanet = statingPlanet;
         this.balance = balance;
         this.rocket = rocket;
-        this.planets = planets;
+        this.launches = launches;
+        this.income = income;
     }
 
+    //Methods
     public boolean canLaunch(int planet) {
-        if (balance >= planets.get(planet).getLaunchCost()) return true;
+        if (balance >= launches.get(planet).getLaunchCost()) return true;
         else return false;
     }
 
     public void launchMission(int planet) {
-        if (planets.get(planet).getAmount() == 0) {
-            planets.get(planet).setTimeRemaining(planets.get(planet).getLaunchTime());
-        }
-        planets.get(planet).setAmount(planets.get(planet).getAmount() + 1);
+        launches.get(planet).setAmount(launches.get(planet).getAmount() + 1);
     }
 
     public double calculateIncome() {
         double income = 0;
-        for (Planet planet : planets) {
-            if (planet.getAmount() > 0) {
-                planet.setTimeRemaining(planet.getTimeRemaining() - 1000);
-                if (planet.getTimeRemaining() <= 0) {
-                    income += planet.getLaunchIncome();
-                    planet.setTimeRemaining(planet.getLaunchTime());
-                }
-            }
+        for (Launch launch : launches) {
+            income += launch.getLaunchIncome();
         }
         return income;
     }
 
-
-
+    //Getters and Setters
     @NonNull
     public String getSystemName() {
         return systemName;
@@ -64,14 +53,6 @@ public class Solar {
 
     public void setSystemName(@NonNull String systemName) {
         this.systemName = systemName;
-    }
-
-    public int getStatingPlanet() {
-        return statingPlanet;
-    }
-
-    public void setStatingPlanet(int statingPlanet) {
-        this.statingPlanet = statingPlanet;
     }
 
     public double getBalance() {
@@ -90,12 +71,12 @@ public class Solar {
         this.rocket = rocket;
     }
 
-    public ArrayList<Planet> getPlanets() {
-        return planets;
+    public ArrayList<Launch> getLaunches() {
+        return launches;
     }
 
-    public void setPlanets(ArrayList<Planet> planets) {
-        this.planets = planets;
+    public void setLaunches(ArrayList<Launch> launches) {
+        this.launches = launches;
     }
 
     public double getIncome() {
@@ -105,4 +86,5 @@ public class Solar {
     public void setIncome(double income) {
         this.income = income;
     }
+
 }

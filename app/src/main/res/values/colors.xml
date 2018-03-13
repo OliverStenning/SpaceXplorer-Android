@@ -9,8 +9,9 @@
     <color name="colorNumber">#2E86DE</color>
     <color name="colorDisabled">#95A5A6</color>
 
-    <!-- Bottom Dots Color -->
-    <color name="inactiveDot">#202E86DE</color>
+
+
+    <color name="unlockColor">#C02E86DE</color>
 
     <!-- Launch Button Colors -->
     <color name="buttonLaunch">#E67E22</color>

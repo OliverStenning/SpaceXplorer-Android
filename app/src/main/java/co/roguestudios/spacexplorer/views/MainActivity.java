@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private GameModel gameModel;
 
     private FragmentManager fragmentManager;
-    private PlanetFragment planetFragment;
+    private LaunchFragment planetFragment;
 
     private TextView balanceText;
     private TextView incomeText;
@@ -37,14 +37,14 @@ public class MainActivity extends AppCompatActivity {
         deleteDatabase("systems");
 
         balanceText = findViewById(R.id.balanceText);
-        incomeText = findViewById(R.id.incomeText);
+        incomeText = findViewById(R.id.launchIncomeText);
 
         gameModel = ViewModelProviders.of(this).get(GameModel.class);
         gameModel.setSystemName("Solar");
         gameModel.loadDatabase(this);
 
         fragmentManager = getSupportFragmentManager();
-        planetFragment = new PlanetFragment();
+        planetFragment = new LaunchFragment();
         fragmentManager.beginTransaction().replace(R.id.fragment, planetFragment).commit();
 
         final Observer<Solar> balanceObserver = new Observer<Solar>() {

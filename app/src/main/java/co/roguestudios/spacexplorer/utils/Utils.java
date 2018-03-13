@@ -94,15 +94,4 @@ public final class Utils {
         return output;
     }
 
-    public static String getTimeString(long time) {
-
-        time = (long) Math.floor(time / 1000);
-
-        String hours = String.format("%02d", time / 3600);
-        String minutes = String.format("%02d", (time % 3600) / 60);
-        String seconds = String.format("%02d", ((time % 3600) % 60));
-
-        return (hours + ":" + minutes + ":" + seconds);
-    }
-
 }

@@ -1,24 +1,35 @@
 package co.roguestudios.spacexplorer.datatypes;
 
-public class Planet {
+public class Launch {
 
-    private String planetName;
+    private String code;
+    private String name;
+    private String planet;
+    private String type;
     private int amount;
-    private double clickAmount;
     private double income;
     private double bonus;
     private double cost;
     private double rate;
     private double discount;
-    private long launchTime;
-    private double speed;
     private int rocket;
-    private long timeRemaining;
 
-    public Planet(String planetName) {
-        this.planetName = planetName;
+    //Constructors
+    public Launch(String code, String name, String planet, String type, int amount, double income, double bonus, double cost, double rate, double discount, int rocket) {
+        this.code = code;
+        this.name = name;
+        this.planet = planet;
+        this.type = type;
+        this.amount = amount;
+        this.income = income;
+        this.bonus = bonus;
+        this.cost = cost;
+        this.rate = rate;
+        this.discount = discount;
+        this.rocket = rocket;
     }
 
+    //Methods
     public double getLaunchCost() {
         return Math.floor(Math.pow(rate, amount) * cost * discount);
     }
@@ -27,16 +38,37 @@ public class Planet {
         return income * bonus * amount;
     }
 
-    public int getTimePercentage() {
-        return (int) ((launchTime - timeRemaining) / launchTime) * 1000;
+    //Getters and Setters
+    public String getCode() {
+        return code;
     }
 
-    public String getPlanetName() {
-        return planetName;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public void setPlanetName(String planetName) {
-        this.planetName = planetName;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(String planet) {
+        this.planet = planet;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getAmount() {
@@ -45,14 +77,6 @@ public class Planet {
 
     public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-    public double getClickAmount() {
-        return clickAmount;
-    }
-
-    public void setClickAmount(double clickAmount) {
-        this.clickAmount = clickAmount;
     }
 
     public double getIncome() {
@@ -95,35 +119,11 @@ public class Planet {
         this.discount = discount;
     }
 
-    public long getLaunchTime() {
-        return launchTime;
-    }
-
-    public void setLaunchTime(long launchTime) {
-        this.launchTime = launchTime;
-    }
-
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
-
     public int getRocket() {
         return rocket;
     }
 
     public void setRocket(int rocket) {
         this.rocket = rocket;
-    }
-
-    public long getTimeRemaining() {
-        return timeRemaining;
-    }
-
-    public void setTimeRemaining(long timeRemaining) {
-        this.timeRemaining = timeRemaining;
     }
 }

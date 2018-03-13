@@ -2,22 +2,16 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ac8748e8866a509f82b533c113aa20ee",
+    "identityHash": "9b43d6d79a339319c46592e1c3f58cc9",
     "entities": [
       {
         "tableName": "Solar",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`systemName` TEXT NOT NULL, `statingPlanet` INTEGER NOT NULL, `balance` REAL NOT NULL, `rocket` INTEGER NOT NULL, `planets` TEXT, `income` REAL NOT NULL, PRIMARY KEY(`systemName`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`systemName` TEXT NOT NULL, `balance` REAL NOT NULL, `rocket` INTEGER NOT NULL, `launches` TEXT, `income` REAL NOT NULL, PRIMARY KEY(`systemName`))",
         "fields": [
           {
             "fieldPath": "systemName",
             "columnName": "systemName",
             "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "statingPlanet",
-            "columnName": "statingPlanet",
-            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -33,8 +27,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "planets",
-            "columnName": "planets",
+            "fieldPath": "launches",
+            "columnName": "launches",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -57,7 +51,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ac8748e8866a509f82b533c113aa20ee\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9b43d6d79a339319c46592e1c3f58cc9\")"
     ]
   }
 }

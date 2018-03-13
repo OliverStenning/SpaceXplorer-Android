@@ -8,20 +8,20 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import co.roguestudios.spacexplorer.datatypes.Planet;
+import co.roguestudios.spacexplorer.datatypes.Launch;
 
 public class Converters {
 
     @TypeConverter
-    public static ArrayList<Planet> planetsFromString(String value) {
-        Type listType = new TypeToken<ArrayList<Planet>>(){}.getType();
+    public static ArrayList<Launch> planetsFromString(String value) {
+        Type listType = new TypeToken<ArrayList<Launch>>(){}.getType();
         return new Gson().fromJson(value, listType);
     }
 
     @TypeConverter
-    public static String stringFromPlanets(ArrayList<Planet> planets) {
+    public static String stringFromPlanets(ArrayList<Launch> launches) {
         Gson gson = new Gson();
-        return gson.toJson(planets);
+        return gson.toJson(launches);
     }
 
 }

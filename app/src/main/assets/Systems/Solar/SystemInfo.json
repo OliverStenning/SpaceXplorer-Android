@@ -1,138 +1,115 @@
 {
   "balance": 10000.0,
-  "planets": [
+  "launches": [
     {
       "bonus": 1.0,
-      "clickAmount":  200.0,
+      "code": "EaSa1",
       "cost": 1000,
       "discount": 1.0,
       "income": 1000.0,
-      "launchTime": 5000,
-      "planetName": "Sun",
-      "speed": 1.0,
+      "name": "Low Earth Orbit",
+      "planet": "Earth",
       "rate": 1.1,
       "rocket": 1,
-      "speed": 1.0
+      "type": "Satellite"
     },
     {
       "bonus": 1.0,
-      "clickAmount":  200.0,
+      "code": "EaSa1",
       "cost": 1000,
       "discount": 1.0,
       "income": 1000.0,
-      "launchTime": 5000,
-      "planetName": "Mercury",
-      "speed": 1.0,
+      "name": "Geostationary Orbit",
+      "planet": "Earth",
       "rate": 1.1,
       "rocket": 1,
-      "speed": 1.0
+      "type": "Satellite"
     },
     {
       "bonus": 1.0,
-      "clickAmount":  200.0,
+      "code": "EaSa1",
       "cost": 1000,
       "discount": 1.0,
       "income": 1000.0,
-      "launchTime": 5000,
-      "planetName": "Venus",
-      "speed": 1.0,
+      "name": "Mars Recon",
+      "planet": "Mars",
       "rate": 1.1,
       "rocket": 1,
-      "speed": 1.0
+      "type": "Satellite"
     },
     {
       "bonus": 1.0,
-      "clickAmount":  200.0,
+      "code": "EaSa1",
       "cost": 1000,
       "discount": 1.0,
       "income": 1000.0,
-      "launchTime": 5000,
-      "planetName": "Earth",
-      "speed": 1.0,
+      "name": "Mars Lander",
+      "planet": "Mars",
       "rate": 1.1,
       "rocket": 1,
-      "speed": 1.0
+      "type": "Satellite"
     },
     {
       "bonus": 1.0,
-      "clickAmount":  200.0,
+      "code": "EaSa1",
       "cost": 1000,
       "discount": 1.0,
       "income": 1000.0,
-      "launchTime": 5000,
-      "planetName": "Mars",
-      "speed": 1.0,
+      "name": "Venus Exploration",
+      "planet": "Venus",
       "rate": 1.1,
       "rocket": 1,
-      "speed": 1.0
+      "type": "Satellite"
     },
     {
       "bonus": 1.0,
-      "clickAmount":  200.0,
+      "code": "EaSa1",
       "cost": 1000,
       "discount": 1.0,
       "income": 1000.0,
-      "launchTime": 5000,
-      "planetName": "Jupiter",
-      "speed": 1.0,
+      "name": "Mercury Expedition",
+      "planet": "Mercury",
       "rate": 1.1,
       "rocket": 1,
-      "speed": 1.0
+      "type": "Satellite"
     },
     {
       "bonus": 1.0,
-      "clickAmount":  200.0,
+      "code": "EaSa1",
       "cost": 1000,
       "discount": 1.0,
       "income": 1000.0,
-      "launchTime": 5000,
-      "planetName": "Saturn",
-      "speed": 1.0,
+      "name": "Low Earth Orbit",
+      "planet": "Jupiter",
       "rate": 1.1,
       "rocket": 1,
-      "speed": 1.0
+      "type": "Satellite"
     },
     {
       "bonus": 1.0,
-      "clickAmount":  200.0,
+      "code": "EaSa1",
       "cost": 1000,
       "discount": 1.0,
       "income": 1000.0,
-      "launchTime": 5000,
-      "planetName": "Uranus",
-      "speed": 1.0,
+      "name": "Low Earth Orbit",
+      "planet": "Earth",
       "rate": 1.1,
       "rocket": 1,
-      "speed": 1.0
+      "type": "Satellite"
     },
     {
       "bonus": 1.0,
-      "clickAmount":  200.0,
+      "code": "EaSa1",
       "cost": 1000,
       "discount": 1.0,
       "income": 1000.0,
-      "launchTime": 5000,
-      "planetName": "Neptune",
-      "speed": 1.0,
+      "name": "Low Earth Orbit",
+      "planet": "Earth",
       "rate": 1.1,
       "rocket": 1,
-      "speed": 1.0
-    },
-    {
-      "bonus": 1.0,
-      "clickAmount":  200.0,
-      "cost": 1000,
-      "discount": 1.0,
-      "income": 1000.0,
-      "launchTime": 5000,
-      "planetName": "Pluto",
-      "speed": 1.0,
-      "rate": 1.1,
-      "rocket": 1,
-      "speed": 1.0
+      "type": "Satellite"
     }
   ],
   "rocket": 1,
-  "statingPlanet": 3,
   "systemName": "Solar"
 }

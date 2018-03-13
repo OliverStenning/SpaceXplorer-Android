@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/launchLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/launchPlanetImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/pl_earth"/>
+
+                <ImageView
+                    android:id="@+id/launchTypeImage"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/ty_satellite"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp">
+
+                    <ProgressBar
+                        android:id="@+id/launchUnlockProgress"
+                        style="@style/amountProgress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:max="100"
+                        android:progress="100"/>
+
+                    <TextView
+                        android:id="@+id/launchAmountText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:fontFamily="@font/rajdhani_bold"
+                        android:gravity="center"
+                        android:text="@string/defaultLaunchAmount"
+                        android:textColor="@color/colorText"
+                        android:textSize="14sp"/>
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp">
+
+                <TextView
+                    android:id="@+id/launchNameText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/rajdhani_bold"
+                    android:gravity="bottom|start"
+                    android:paddingBottom="4dp"
+                    android:text="@string/defaultLaunchName"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorText"
+                    android:textSize="24sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="2dp">
+
+                    <TextView
+                        android:id="@+id/launchIncomeText"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_info"
+                        android:fontFamily="@font/rajdhani_bold"
+                        android:gravity="center"
+                        android:text="@string/defaultLaunchIncome"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="16sp"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
+                        <Button
+                            android:id="@+id/launchButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/bg_button_launch"
+                            android:fontFamily="@font/rajdhani_bold"
+                            android:stateListAnimator="@null"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorText"
+                            android:textSize="20sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/rajdhani_bold"
+                            android:gravity="center|start"
+                            android:paddingEnd="12dp"
+                            android:paddingStart="12dp"
+                            android:text="@string/launchLabel"
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/launchCostText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/rajdhani_bold"
+                            android:gravity="center_vertical|end"
+                            android:paddingEnd="20dp"
+                            android:paddingStart="20dp"
+                            android:text="@string/defaultLaunchCost"
+                            android:textColor="@color/colorText"
+                            android:textSize="18sp"/>
+
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lockedLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/lockedPlanetImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.5"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/pl_earth"/>
+
+                <ImageView
+                    android:id="@+id/lockedTypeImage"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="bottom|end"
+                    android:alpha="0.5"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/ty_satellite"/>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lockedNameText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/rajdhani_bold"
+                    android:gravity="bottom"
+                    android:text="@string/defaultLaunchName"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText"
+                    android:textSize="24sp"/>
+
+                <TextView
+                    android:id="@+id/lockedUpgradeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/rajdhani_bold"
+                    android:text="@string/defaultLockedUpgrade"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorNumber"
+                    android:textSize="14sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -12,7 +12,7 @@
     <!-- Progress Bar Style -->
     <style name="amountProgress" parent="android:Widget.ProgressBar.Horizontal">
         <item name="android:indeterminateOnly">false</item>
-        <item name="android:progressDrawable">@drawable/pb_income</item>
+        <item name="android:progressDrawable">@drawable/pb_unlock</item>
         <item name="android:minHeight">10dp</item>
         <item name="android:maxHeight">50dp</item>
     </style>
